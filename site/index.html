@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>People · Crewline</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="index.html">Crewline</a>
+    <nav aria-label="Primary">
+      <a href="index.html" aria-current="page">People</a>
+      <a href="activity.html">Activity</a>
+    </nav>
+    <span class="workspace">Northwind Studio</span>
+  </header>
+  <main>
+    <h1>People</h1>
+    <p class="page-meta">Everyone with access to the Northwind Studio workspace.</p>
+    <div class="controls">
+      <label class="control-label" for="team-filter">
+        Team
+        <select id="team-filter">
+          <option>All teams</option>
+          <option>Engineering</option>
+          <option>Design</option>
+          <option>Support</option>
+          <option>Operations</option>
+        </select>
+      </label>
+      <label class="control-label" for="status-filter">
+        Status
+        <select id="status-filter">
+          <option>Any status</option>
+          <option>Active</option>
+          <option>Away</option>
+          <option>Invited</option>
+        </select>
+      </label>
+      <span class="spacer"></span>
+      <button type="button" class="btn btn-primary" id="invite-open">Invite member</button>
+    </div>
+    <table>
+      <caption>8 members. Invited members count against the plan once they accept.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Member</th>
+          <th scope="col" class="col-team">Team</th>
+          <th scope="col">Role</th>
+          <th scope="col">Status</th>
+          <th scope="col" class="col-last">Last active</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">
+            <span class="person">
+              <span class="monogram" aria-hidden="true">HB</span>
+              <span>
+                <span class="person-name">Hugo Bertrand</span><br>
+                <span class="person-email">hugo@northwind.studio</span>
+              </span>
+            </span>
+          </th>
+          <td class="col-team">Engineering</td>
+          <td>Engineering manager</td>
+          <td><span class="status status-active">Active</span></td>
+          <td class="col-last">12 minutes ago</td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <span class="person">
+              <span class="monogram" aria-hidden="true">AO</span>
+              <span>
+                <span class="person-name">Amara Okonkwo</span><br>
+                <span class="person-email">amara@northwind.studio</span>
+              </span>
+            </span>
+          </th>
+          <td class="col-team">Engineering</td>
+          <td>Staff engineer</td>
+          <td><span class="status status-active">Active</span></td>
+          <td class="col-last">40 minutes ago</td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <span class="person">
+              <span class="monogram" aria-hidden="true">FH</span>
+              <span>
+                <span class="person-name">Farid Haddad</span><br>
+                <span class="person-email">farid@northwind.studio</span>
+              </span>
+            </span>
+          </th>
+          <td class="col-team">Design</td>
+          <td>Design systems</td>
+          <td><span class="status status-active">Active</span></td>
+          <td class="col-last">1 hour ago</td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <span class="person">
+              <span class="monogram" aria-hidden="true">RN</span>
+              <span>
+                <span class="person-name">Rosa Nilsen</span><br>
+                <span class="person-email">rosa@northwind.studio</span>
+              </span>
+            </span>
+          </th>
+          <td class="col-team">Design</td>
+          <td>Product designer</td>
+          <td><span class="status">Away until 24 March</span></td>
+          <td class="col-last">Friday</td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <span class="person">
+              <span class="monogram" aria-hidden="true">DM</span>
+              <span>
+                <span class="person-name">Daniel Mwangi</span><br>
+                <span class="person-email">daniel@northwind.studio</span>
+              </span>
+            </span>
+          </th>
+          <td class="col-team">Engineering</td>
+          <td>Backend engineer</td>
+          <td><span class="status status-active">Active</span></td>
+          <td class="col-last">2 hours ago</td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <span class="person">
+              <span class="monogram" aria-hidden="true">CR</span>
+              <span>
+                <span class="person-name">Clara Reyes</span><br>
+                <span class="person-email">clara@northwind.studio</span>
+              </span>
+            </span>
+          </th>
+          <td class="col-team">Support</td>
+          <td>Support lead</td>
+          <td><span class="status status-active">Active</span></td>
+          <td class="col-last">3 hours ago</td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <span class="person">
+              <span class="monogram" aria-hidden="true">GT</span>
+              <span>
+                <span class="person-name">Grace Tomlin</span><br>
+                <span class="person-email">grace@northwind.studio</span>
+              </span>
+            </span>
+          </th>
+          <td class="col-team">Operations</td>
+          <td>Studio operations</td>
+          <td><span class="status status-active">Active</span></td>
+          <td class="col-last">Yesterday</td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <span class="person">
+              <span class="monogram" aria-hidden="true">ES</span>
+              <span>
+                <span class="person-name">Elin Sandberg</span><br>
+                <span class="person-email">elin@northwind.studio</span>
+              </span>
+            </span>
+          </th>
+          <td class="col-team">Support</td>
+          <td>Support engineer</td>
+          <td><span class="status status-invited">Invited</span></td>
+          <td class="col-last">Never</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <dialog class="modal" id="invite-dialog" aria-labelledby="invite-title">
+      <div class="modal-head">
+        <h2 class="modal-title" id="invite-title">Invite member</h2>
+        <button type="button" class="modal-close" id="invite-close">&times;</button>
+      </div>
+      <form class="modal-body" id="invite-form" method="dialog">
+        <div class="field">
+          <label class="field-label" for="invite-email">Email</label>
+          <input type="email" class="field-input" id="invite-email" name="email" placeholder="name@company.com" required>
+          <p class="field-error" id="invite-email-error" hidden>Enter a work email</p>
+        </div>
+        <div class="field">
+          <label class="field-label" for="invite-role">Role</label>
+          <select id="invite-role" name="role">
+            <option>Member</option>
+            <option>Support engineer</option>
+            <option>Billing admin</option>
+            <option>Workspace admin</option>
+          </select>
+        </div>
+        <fieldset class="field permissions">
+          <legend class="field-label">Permissions</legend>
+          <label class="permission">
+            <input type="checkbox" name="permissions" value="directory" checked>
+            Browse the people directory
+          </label>
+          <label class="permission">
+            <input type="checkbox" name="permissions" value="activity">
+            Read the activity log
+          </label>
+          <label class="permission">
+            <input type="checkbox" name="permissions" value="invite">
+            Invite other members
+          </label>
+        </fieldset>
+      </form>
+      <div class="modal-foot">
+        <button type="button" class="btn" id="invite-cancel">Cancel</button>
+        <button type="submit" form="invite-form" class="btn modal-submit">Send invite</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="modal.js"></script>
+</body>
+</html>

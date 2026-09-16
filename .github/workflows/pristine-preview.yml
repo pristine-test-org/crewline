@@ -1,0 +1,56 @@
+# .github/workflows/pristine-preview.yml
+# Builds the site in YOUR CI and uploads the static output to pristine, which
+# serves it as the preview the design review renders. No secrets: the job's
+# GitHub OIDC token proves which repo and commit is uploading. When a step
+# fails, the last step tells pristine which one, so the setup page can say.
+name: pristine preview
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20', cache: npm }
+      - id: install
+        shell: bash
+        run: |
+          exec > >(tee pristine-step.log) 2>&1
+          npm ci
+      - id: build
+        shell: bash
+        run: |
+          exec > >(tee pristine-step.log) 2>&1
+          npm run build
+      - name: Upload to pristine
+        id: upload
+        env:
+          OUT: site
+        run: |
+          TOKEN=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=pristine.style" | jq -r .value)
+          tar -czf site.tgz -C "$OUT" .
+          REG=$(curl -sS --fail-with-body -X POST https://pristine.style/api/sites/upload \
+            -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/gzip" \
+            --data-binary @site.tgz) || { echo "$REG"; exit 1; }
+          echo "$REG"
+          echo "pristine access check: $(echo "$REG" | jq -r '.access.detail // "not run"')"
+      - name: Tell pristine what failed
+        if: failure()
+        run: |
+          TOKEN=$(curl -sS -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=pristine.style" | jq -r .value)
+          LOG=$({ for f in pristine-step.log app.log tunnel.log; do [ -s "$f" ] && { echo "== $f"; tail -c 3000 "$f"; }; done; true; } | sed -E 's#://([^:/@[:space:]]+):[^@[:space:]]+@#://\1:***@#g')
+          jq -n --arg log "$LOG" --arg url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            '{"outcomes": {"install": "${{ steps.install.outcome }}", "prepare": "${{ steps.prepare.outcome }}", "seed": "${{ steps.seed.outcome }}", "build": "${{ steps.build.outcome }}", "upload": "${{ steps.upload.outcome }}"}, "log": $log, "runUrl": $url}' \
+            | curl -sS -X POST https://pristine.style/api/previews/report \
+              -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" --data-binary @-
+# If your site is built under a subpath (SvelteKit paths.base, Next basePath),
+# tar the PARENT of the output so its assets resolve, and add
+# -H "X-Pristine-Base-Path: /that-path" to the upload.
