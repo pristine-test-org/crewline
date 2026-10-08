@@ -399,3 +399,51 @@ thead th {
   background: #2f6fd8;
   border-color: #2f6fd8;
 }
+
+/* --- Billing ------------------------------------------------------------ */
+
+.plan-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  max-width: 560px;
+}
+
+.plan-card h2 { margin: 0 0 var(--space-xs); }
+
+.plan-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.plan-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.plan-notice {
+  background: var(--notice-soft);
+  color: var(--notice);
+  border-radius: var(--radius);
+  padding: var(--space-sm) var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.plan-notice[hidden] { display: none; }
+
+.plan-facts {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.plan-facts div { display: flex; justify-content: space-between; gap: var(--space-md); }
+.plan-facts dt { color: var(--ink-soft); }
+.plan-facts dd { margin: 0; }
+
+.plan-actions { margin-top: var(--space-md); }
+.plan-actions .btn { display: inline-block; text-decoration: none; }

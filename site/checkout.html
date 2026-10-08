@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout · Crewline</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="index.html">Crewline</a>
+    <nav aria-label="Primary">
+      <a href="index.html">People</a>
+      <a href="activity.html">Activity</a>
+      <a href="billing.html" aria-current="page">Billing</a>
+    </nav>
+    <span class="workspace">Northwind Studio</span>
+  </header>
+  <main>
+    <h1>Checkout</h1>
+    <p class="page-meta" id="checkout-summary">One moment.</p>
+    <form class="plan-card" id="checkout-form" hidden>
+      <p class="plan-name" id="checkout-plan"></p>
+      <p id="checkout-total"></p>
+      <div class="plan-actions"><button type="submit" class="btn btn-primary">Pay</button></div>
+    </form>
+  </main>
+  <script src="plans.js"></script>
+  <script src="checkout.js"></script>
+</body>
+</html>

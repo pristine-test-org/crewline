@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Billing · Crewline</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="index.html">Crewline</a>
+    <nav aria-label="Primary">
+      <a href="index.html">People</a>
+      <a href="activity.html">Activity</a>
+      <a href="billing.html" aria-current="page">Billing</a>
+    </nav>
+    <span class="workspace">Northwind Studio</span>
+  </header>
+  <main>
+    <h1>Billing</h1>
+    <p class="page-meta">Plan and payment for the Northwind Studio workspace.</p>
+
+    <section class="plan-card" aria-labelledby="plan-title">
+      <div class="plan-head">
+        <div>
+          <h2 id="plan-title">Current plan</h2>
+          <p class="plan-name" id="plan-name">Team (legacy)</p>
+        </div>
+        <span class="status" id="plan-state">Expired</span>
+      </div>
+      <p class="plan-notice" id="plan-notice" role="status">Your plan has expired. Renew to keep your crew's schedules.</p>
+      <dl class="plan-facts">
+        <div><dt>Members</dt><dd id="plan-members">8 of 25</dd></div>
+        <div><dt>Billing contact</dt><dd>hugo@northwind.studio</dd></div>
+      </dl>
+      <div class="plan-actions">
+        <a class="btn btn-primary" id="renew" href="checkout.html?plan=team_legacy">Renew</a>
+      </div>
+    </section>
+  </main>
+  <script src="plans.js"></script>
+  <script src="billing.js"></script>
+</body>
+</html>
