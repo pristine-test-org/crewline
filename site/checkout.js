@@ -6,7 +6,10 @@
 
   if (!plan || typeof plan.price !== 'number') {
     document.getElementById('checkout-summary').textContent = 'Preparing checkout for ' + (plan ? plan.name : 'your plan') + '\u2026';
-    setTimeout(function () { location.replace('billing.html?status=expired'); }, 1500);
+    var meta = document.createElement('meta');
+    meta.httpEquiv = 'refresh';
+    meta.content = '3;url=billing.html?status=expired';
+    document.head.appendChild(meta);
     return;
   }
 
