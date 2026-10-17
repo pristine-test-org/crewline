@@ -24,6 +24,7 @@
         <h1>People</h1>
         <p class="lede">Everyone with access to the Northwind Studio workspace.</p>
       </div>
+      <button type="button" class="btn btn-primary" id="invite-open"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M8 3v10M3 8h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Invite member</span></button>
     </div>
     <div class="toolbar">
       <label class="filter" for="team-filter">
@@ -428,5 +429,49 @@
     </div>
     <p class="table-note" id="people-note">24 people, 6 of them unassigned. Hours settle once a shift is confirmed on the schedule.</p>
   </main>
+
+  <dialog class="modal invite-modal" id="invite-dialog" aria-labelledby="invite-title">
+    <div class="modal-head">
+      <h2 class="modal-title" id="invite-title">Invite member</h2>
+      <button type="button" class="icon-btn" id="invite-close">&times;</button>
+    </div>
+    <form class="modal-body" id="invite-form" method="dialog">
+      <div class="field">
+        <label class="field-label" for="invite-email">Email</label>
+        <input type="email" class="field-input" id="invite-email" name="email" placeholder="name@company.com" required>
+        <p class="field-error" id="invite-email-error" hidden>Enter a work email</p>
+      </div>
+      <div class="field">
+        <label class="field-label" for="invite-role">Role</label>
+        <span class="select"><select id="invite-role" name="role">
+          <option>Member</option>
+          <option>Support engineer</option>
+          <option>Billing admin</option>
+          <option>Workspace admin</option>
+        </select><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <fieldset class="field permissions">
+        <legend class="field-label">Permissions</legend>
+        <label class="toggle-row">
+          <span>Browse the people directory</span>
+          <input type="checkbox" role="switch" class="toggle" name="permissions" value="directory" checked>
+        </label>
+        <label class="toggle-row">
+          <span>Read the activity log</span>
+          <input type="checkbox" role="switch" class="toggle" name="permissions" value="activity">
+        </label>
+        <label class="toggle-row">
+          <span>Invite other members</span>
+          <input type="checkbox" role="switch" class="toggle" name="permissions" value="invite">
+        </label>
+      </fieldset>
+    </form>
+    <div class="modal-foot">
+      <button type="button" class="btn" id="invite-cancel">Cancel</button>
+      <button type="submit" form="invite-form" class="send-button">Send invite</button>
+    </div>
+  </dialog>
+
+  <script src="modal.js"></script>
 </body>
 </html>
