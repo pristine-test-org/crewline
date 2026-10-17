@@ -4,222 +4,429 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>People · Crewline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="masthead">
-    <a class="wordmark" href="index.html">Crewline</a>
-    <nav aria-label="Primary">
+    <a class="wordmark" href="index.html"><span class="wordmark-glyph" aria-hidden="true"></span>Crewline</a>
+    <nav class="nav" aria-label="Primary">
       <a href="index.html" aria-current="page">People</a>
       <a href="activity.html">Activity</a>
     </nav>
-    <span class="workspace">Northwind Studio</span>
+    <span class="workspace"><span class="workspace-name">Northwind Studio</span><span class="avatar me" role="img" aria-label="Signed in as Clara Reyes">CR</span></span>
   </header>
   <main>
-    <h1>People</h1>
-    <p class="page-meta">Everyone with access to the Northwind Studio workspace.</p>
-    <div class="controls">
-      <label class="control-label" for="team-filter">
-        Team
-        <select id="team-filter">
+    <div class="page-head">
+      <div>
+        <h1>People</h1>
+        <p class="lede">Everyone with access to the Northwind Studio workspace.</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <label class="filter" for="team-filter">
+        <span class="filter-label">Team</span>
+        <span class="select"><select id="team-filter">
           <option>All teams</option>
           <option>Engineering</option>
           <option>Design</option>
           <option>Support</option>
           <option>Operations</option>
-        </select>
+        </select><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </label>
-      <label class="control-label" for="status-filter">
-        Status
-        <select id="status-filter">
-          <option>Any status</option>
-          <option>Active</option>
-          <option>Away</option>
-          <option>Invited</option>
-        </select>
+      <label class="filter" for="project-filter">
+        <span class="filter-label">Project</span>
+        <span class="select"><select id="project-filter">
+          <option>All projects</option>
+          <option>Harbourline</option>
+          <option>Fenwick Rebrand</option>
+          <option>Ilminster Hall</option>
+          <option>Bright Harbour</option>
+        </select><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </label>
-      <span class="spacer"></span>
-      <button type="button" class="btn btn-primary" id="invite-open">Invite member</button>
+      <div class="seg" role="group" aria-label="Show">
+        <button type="button" aria-pressed="true">Everyone</button>
+        <button type="button" aria-pressed="false">Unassigned <span class="count">6</span></button>
+      </div>
     </div>
-    <table>
-      <caption>8 members. Invited members count against the plan once they accept.</caption>
-      <thead>
-        <tr>
-          <th scope="col">Member</th>
-          <th scope="col" class="col-team">Team</th>
-          <th scope="col">Role</th>
-          <th scope="col">Status</th>
-          <th scope="col" class="col-last">Last active</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">
-            <span class="person">
-              <span class="monogram" aria-hidden="true">HB</span>
-              <span>
-                <span class="person-name">Hugo Bertrand</span><br>
-                <span class="person-email">hugo@northwind.studio</span>
+    <div class="table-frame">
+      <table class="people" aria-describedby="people-note">
+        <thead>
+          <tr>
+            <th scope="col">Member</th>
+            <th scope="col" class="col-role">Role</th>
+            <th scope="col" class="col-project">Project</th>
+            <th scope="col" class="col-week">This week</th>
+            <th scope="col" class="col-actions"><span class="vh">Actions</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="0" aria-hidden="true">HB</span>
+                <span class="person-text">
+                  <span class="person-name">Hugo Bertrand</span>
+                  <span class="person-email">hugo@northwind.studio</span>
+                </span>
               </span>
-            </span>
-          </th>
-          <td class="col-team">Engineering</td>
-          <td>Engineering manager</td>
-          <td><span class="status status-active">Active</span></td>
-          <td class="col-last">12 minutes ago</td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span class="person">
-              <span class="monogram" aria-hidden="true">AO</span>
-              <span>
-                <span class="person-name">Amara Okonkwo</span><br>
-                <span class="person-email">amara@northwind.studio</span>
+            </th>
+            <td class="col-role">Engineering manager</td>
+            <td class="col-project">Ilminster Hall</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">36</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 90%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="1" aria-hidden="true">AO</span>
+                <span class="person-text">
+                  <span class="person-name">Amara Okonkwo</span>
+                  <span class="person-email">amara@northwind.studio</span>
+                </span>
               </span>
-            </span>
-          </th>
-          <td class="col-team">Engineering</td>
-          <td>Staff engineer</td>
-          <td><span class="status status-active">Active</span></td>
-          <td class="col-last">40 minutes ago</td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span class="person">
-              <span class="monogram" aria-hidden="true">FH</span>
-              <span>
-                <span class="person-name">Farid Haddad</span><br>
-                <span class="person-email">farid@northwind.studio</span>
+            </th>
+            <td class="col-role">Staff engineer</td>
+            <td class="col-project">Harbourline</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">40</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 100%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="2" aria-hidden="true">FH</span>
+                <span class="person-text">
+                  <span class="person-name">Farid Haddad</span>
+                  <span class="person-email">farid@northwind.studio</span>
+                </span>
               </span>
-            </span>
-          </th>
-          <td class="col-team">Design</td>
-          <td>Design systems</td>
-          <td><span class="status status-active">Active</span></td>
-          <td class="col-last">1 hour ago</td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span class="person">
-              <span class="monogram" aria-hidden="true">RN</span>
-              <span>
-                <span class="person-name">Rosa Nilsen</span><br>
-                <span class="person-email">rosa@northwind.studio</span>
+            </th>
+            <td class="col-role">Design systems</td>
+            <td class="col-project">Fenwick Rebrand</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">28</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 70%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="3" aria-hidden="true">RN</span>
+                <span class="person-text">
+                  <span class="person-name">Rosa Nilsen</span>
+                  <span class="person-email">rosa@northwind.studio</span>
+                </span>
               </span>
-            </span>
-          </th>
-          <td class="col-team">Design</td>
-          <td>Product designer</td>
-          <td><span class="status">Away until 24 March</span></td>
-          <td class="col-last">Friday</td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span class="person">
-              <span class="monogram" aria-hidden="true">DM</span>
-              <span>
-                <span class="person-name">Daniel Mwangi</span><br>
-                <span class="person-email">daniel@northwind.studio</span>
+            </th>
+            <td class="col-role">Product designer</td>
+            <td class="col-project">Fenwick Rebrand</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">32</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 80%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="0" aria-hidden="true">DM</span>
+                <span class="person-text">
+                  <span class="person-name">Daniel Mwangi</span>
+                  <span class="person-email">daniel@northwind.studio</span>
+                </span>
               </span>
-            </span>
-          </th>
-          <td class="col-team">Engineering</td>
-          <td>Backend engineer</td>
-          <td><span class="status status-active">Active</span></td>
-          <td class="col-last">2 hours ago</td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span class="person">
-              <span class="monogram" aria-hidden="true">CR</span>
-              <span>
-                <span class="person-name">Clara Reyes</span><br>
-                <span class="person-email">clara@northwind.studio</span>
+            </th>
+            <td class="col-role">Backend engineer</td>
+            <td class="col-project">Harbourline</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">36</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 90%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="1" aria-hidden="true">CR</span>
+                <span class="person-text">
+                  <span class="person-name">Clara Reyes</span>
+                  <span class="person-email">clara@northwind.studio</span>
+                </span>
               </span>
-            </span>
-          </th>
-          <td class="col-team">Support</td>
-          <td>Support lead</td>
-          <td><span class="status status-active">Active</span></td>
-          <td class="col-last">3 hours ago</td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span class="person">
-              <span class="monogram" aria-hidden="true">GT</span>
-              <span>
-                <span class="person-name">Grace Tomlin</span><br>
-                <span class="person-email">grace@northwind.studio</span>
+            </th>
+            <td class="col-role">Support lead</td>
+            <td class="col-project"><span class="chip chip-open">Unassigned</span></td>
+            <td class="col-week"><span class="muted">—</span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Assign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="2" aria-hidden="true">GT</span>
+                <span class="person-text">
+                  <span class="person-name">Grace Tomlin</span>
+                  <span class="person-email">grace@northwind.studio</span>
+                </span>
               </span>
-            </span>
-          </th>
-          <td class="col-team">Operations</td>
-          <td>Studio operations</td>
-          <td><span class="status status-active">Active</span></td>
-          <td class="col-last">Yesterday</td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span class="person">
-              <span class="monogram" aria-hidden="true">ES</span>
-              <span>
-                <span class="person-name">Elin Sandberg</span><br>
-                <span class="person-email">elin@northwind.studio</span>
+            </th>
+            <td class="col-role">Studio operations</td>
+            <td class="col-project">Studio time</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">30</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 75%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="3" aria-hidden="true">ES</span>
+                <span class="person-text">
+                  <span class="person-name">Elin Sandberg</span>
+                  <span class="person-email">elin@northwind.studio</span>
+                </span>
               </span>
-            </span>
-          </th>
-          <td class="col-team">Support</td>
-          <td>Support engineer</td>
-          <td><span class="status status-invited">Invited</span></td>
-          <td class="col-last">Never</td>
-        </tr>
-      </tbody>
-    </table>
+            </th>
+            <td class="col-role">Support engineer</td>
+            <td class="col-project"><span class="chip chip-open">Unassigned</span></td>
+            <td class="col-week"><span class="muted">—</span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Assign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="0" aria-hidden="true">IB</span>
+                <span class="person-text">
+                  <span class="person-name">Ida Brekke</span>
+                  <span class="person-email">ida@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Frontend engineer</td>
+            <td class="col-project">Harbourline</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">32</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 80%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="1" aria-hidden="true">JV</span>
+                <span class="person-text">
+                  <span class="person-name">Jonas Vogt</span>
+                  <span class="person-email">jonas@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">QA engineer</td>
+            <td class="col-project"><span class="chip chip-open">Unassigned</span></td>
+            <td class="col-week"><span class="muted">—</span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Assign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="2" aria-hidden="true">KM</span>
+                <span class="person-text">
+                  <span class="person-name">Kofi Mensah</span>
+                  <span class="person-email">kofi@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Infrastructure</td>
+            <td class="col-project">Ilminster Hall</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">38</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 95%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="3" aria-hidden="true">LF</span>
+                <span class="person-text">
+                  <span class="person-name">Lena Fischer</span>
+                  <span class="person-email">lena@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Product manager</td>
+            <td class="col-project">Bright Harbour</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">36</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 90%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="0" aria-hidden="true">MD</span>
+                <span class="person-text">
+                  <span class="person-name">Marco Dettori</span>
+                  <span class="person-email">marco@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Motion designer</td>
+            <td class="col-project">Fenwick Rebrand</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">30</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 75%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="1" aria-hidden="true">NK</span>
+                <span class="person-text">
+                  <span class="person-name">Nina Kovač</span>
+                  <span class="person-email">nina@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Content designer</td>
+            <td class="col-project">Fenwick Rebrand</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">24</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 60%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="2" aria-hidden="true">OS</span>
+                <span class="person-text">
+                  <span class="person-name">Omar Saleh</span>
+                  <span class="person-email">omar@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Support engineer</td>
+            <td class="col-project">Studio time</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">35</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 88%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="3" aria-hidden="true">PR</span>
+                <span class="person-text">
+                  <span class="person-name">Priya Raman</span>
+                  <span class="person-email">priya@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Data engineer</td>
+            <td class="col-project">Harbourline</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">40</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 100%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="0" aria-hidden="true">SD</span>
+                <span class="person-text">
+                  <span class="person-name">Sofia Duarte</span>
+                  <span class="person-email">sofia@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Office manager</td>
+            <td class="col-project">Studio time</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">16</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 40%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="1" aria-hidden="true">TV</span>
+                <span class="person-text">
+                  <span class="person-name">Teo Vasquez</span>
+                  <span class="person-email">teo@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Contract developer</td>
+            <td class="col-project">Harbourline</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">34</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 85%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="2" aria-hidden="true">TE</span>
+                <span class="person-text">
+                  <span class="person-name">Tom Ellery</span>
+                  <span class="person-email">tom@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Contract designer</td>
+            <td class="col-project"><span class="chip chip-open">Unassigned</span></td>
+            <td class="col-week"><span class="muted">—</span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Assign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="3" aria-hidden="true">YT</span>
+                <span class="person-text">
+                  <span class="person-name">Yuki Tanaka</span>
+                  <span class="person-email">yuki@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">iOS engineer</td>
+            <td class="col-project">Bright Harbour</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">28</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 70%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="0" aria-hidden="true">AB</span>
+                <span class="person-text">
+                  <span class="person-name">Anders Beck</span>
+                  <span class="person-email">anders@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Security engineer</td>
+            <td class="col-project">Ilminster Hall</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">20</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 50%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="1" aria-hidden="true">BL</span>
+                <span class="person-text">
+                  <span class="person-name">Beatrice Lund</span>
+                  <span class="person-email">beatrice@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Researcher</td>
+            <td class="col-project"><span class="chip chip-open">Unassigned</span></td>
+            <td class="col-week"><span class="muted">—</span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Assign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="2" aria-hidden="true">MO</span>
+                <span class="person-text">
+                  <span class="person-name">Mira Okonjo</span>
+                  <span class="person-email">mira@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Studio manager</td>
+            <td class="col-project">Studio time</td>
+            <td class="col-week"><span class="hours"><span class="hours-n">38</span><span class="muted">/ 40 h</span><span class="meter" aria-hidden="true"><i style="width: 95%"></i></span></span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Reassign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+          <tr>
+            <th scope="row">
+              <span class="person">
+                <span class="avatar" data-tone="3" aria-hidden="true">NR</span>
+                <span class="person-text">
+                  <span class="person-name">Noor Rahimi</span>
+                  <span class="person-email">noor@northwind.studio</span>
+                </span>
+              </span>
+            </th>
+            <td class="col-role">Accessibility lead</td>
+            <td class="col-project"><span class="chip chip-open">Unassigned</span></td>
+            <td class="col-week"><span class="muted">—</span></td>
+            <td class="col-actions"><button type="button" class="btn btn-small">Assign</button><button type="button" class="btn btn-small">Remove</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note" id="people-note">24 people, 6 of them unassigned. Hours settle once a shift is confirmed on the schedule.</p>
   </main>
-
-  <dialog class="modal" id="invite-dialog" aria-labelledby="invite-title">
-      <div class="modal-head">
-        <h2 class="modal-title" id="invite-title">Invite member</h2>
-        <button type="button" class="modal-close" id="invite-close">&times;</button>
-      </div>
-      <form class="modal-body" id="invite-form" method="dialog">
-        <div class="field">
-          <label class="field-label" for="invite-email">Email</label>
-          <input type="email" class="field-input" id="invite-email" name="email" placeholder="name@company.com" required>
-          <p class="field-error" id="invite-email-error" hidden>Enter a work email</p>
-        </div>
-        <div class="field">
-          <label class="field-label" for="invite-role">Role</label>
-          <select id="invite-role" name="role">
-            <option>Member</option>
-            <option>Support engineer</option>
-            <option>Billing admin</option>
-            <option>Workspace admin</option>
-          </select>
-        </div>
-        <fieldset class="field permissions">
-          <legend class="field-label">Permissions</legend>
-          <label class="permission">
-            <input type="checkbox" name="permissions" value="directory" checked>
-            Browse the people directory
-          </label>
-          <label class="permission">
-            <input type="checkbox" name="permissions" value="activity">
-            Read the activity log
-          </label>
-          <label class="permission">
-            <input type="checkbox" name="permissions" value="invite">
-            Invite other members
-          </label>
-        </fieldset>
-      </form>
-      <div class="modal-foot">
-        <button type="button" class="btn" id="invite-cancel">Cancel</button>
-        <button type="submit" form="invite-form" class="btn modal-submit">Send invite</button>
-      </div>
-    </div>
-  </dialog>
-
-  <script src="modal.js"></script>
 </body>
 </html>
