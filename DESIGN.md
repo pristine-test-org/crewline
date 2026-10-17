@@ -3,7 +3,7 @@ name: Crewline
 colors:
   field: "#ffe14f"
   field-deep: "#f5d22a"
-  ground: "#fffef8"
+  ground: "#ffffff"
   surface: "#ffffff"
   ink: "#121212"
   ink-2: "#555249"
